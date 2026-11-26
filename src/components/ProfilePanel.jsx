@@ -91,9 +91,6 @@ export default function ProfilePanel({ onContact }) {
       <Photo />
 
       <div className="profile__body">
-        <motion.p className="eyebrow profile__eyebrow" variants={item}>
-          Portfolio <span>/</span> 2026
-        </motion.p>
         <motion.h1 className="profile__name" variants={item}>
           {profile.firstName} <em>M</em>
         </motion.h1>

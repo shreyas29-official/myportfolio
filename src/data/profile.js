@@ -13,7 +13,7 @@ export const profile = {
   experienceLabel: '1+ year in industry',
   email: 'shreyasman333@gmail.com',
   phone: '+91 7760139825',
-  linkedin: 'https://linkedin.com/in/shreyas-m',
+  linkedin: 'https://www.linkedin.com/in/shreyas-m-138b48235',
   github: 'https://github.com/shreyas29',
   resume: '/Shreyas_M_Resume.pdf',
   // Replace public/profile.jpg with your own photo (portrait works best).

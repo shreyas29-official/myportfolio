@@ -17,7 +17,7 @@ export const profile = {
   github: 'https://github.com/shreyas29',
   resume: '/Shreyas_M_Resume.pdf',
   // Replace public/profile.jpg with your own photo (portrait works best).
-  photo: '/profile.jpg',
+  photo: '/shreyas.jpeg',
   status: 'Open to opportunities',
 
   // Rotates in the hero: "I build ___"

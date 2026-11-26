@@ -1,0 +1,224 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  background: var(--header-bg);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border-bottom: 1px solid var(--border);
+}
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1440px;
+  height: var(--header-h);
+  margin: 0 auto;
+  padding: 0 clamp(16px, 2.4vw, 36px);
+}
+.header__progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--jade));
+  transform-origin: left;
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: none;
+}
+.brand__mark {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid var(--accent-line);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 19px;
+  letter-spacing: 0;
+  transition: transform 0.5s var(--ease), background 0.3s;
+}
+.brand:hover .brand__mark {
+  transform: rotate(-8deg) scale(1.05);
+}
+.brand__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.brand__name {
+  font-family: var(--font-display);
+  font-size: 15.5px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.brand__role {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Desktop nav */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-elev);
+}
+.nav__link {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-2);
+  isolation: isolate;
+  transition: color 0.3s var(--ease);
+}
+.nav__link:hover {
+  color: var(--text);
+}
+.nav__link.is-active {
+  color: var(--accent);
+}
+.nav__pill {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-line);
+}
+.nav__link > span:not(.nav__pill) {
+  position: relative;
+}
+.nav__num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+}
+.nav__link.is-active .nav__num {
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+/* Actions */
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+}
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  color: var(--text-2);
+  font-size: 17px;
+  transition: color 0.3s, border-color 0.3s, transform 0.3s var(--ease);
+}
+.icon-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent-line);
+}
+.menu-btn {
+  display: none;
+}
+
+/* Mobile nav */
+.mobile-nav {
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
+}
+.mobile-nav ul {
+  display: grid;
+  padding: 12px 16px 20px;
+}
+.mobile-nav a {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 12px 4px;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--text-2);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+.mobile-nav a.is-active {
+  color: var(--accent);
+}
+.mobile-nav .mobile-nav__resume {
+  align-items: center;
+  gap: 8px;
+  border-bottom: 0;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+@media (max-width: 1240px) {
+  .nav__num {
+    display: none;
+  }
+  .brand__role {
+    display: none;
+  }
+}
+@media (max-width: 1100px) {
+  .brand__text {
+    display: none;
+  }
+  .nav__link {
+    padding: 8px 12px;
+  }
+}
+@media (max-width: 960px) {
+  :root {
+    --header-h: 64px;
+  }
+  .nav {
+    display: none;
+  }
+  .menu-btn {
+    display: grid;
+  }
+  .brand__text {
+    display: flex;
+  }
+}
+.mobile-nav .nav__num {
+  display: inline;
+  font-size: 11px;
+}
+@media (max-width: 480px) {
+  .header__resume {
+    display: none;
+  }
+}

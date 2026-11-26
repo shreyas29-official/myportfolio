@@ -1,0 +1,75 @@
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.bg__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 70% at 60% 30%, #000 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 60% 30%, #000 30%, transparent 80%);
+}
+.bg__blob {
+  position: absolute;
+  width: 60vmax;
+  height: 60vmax;
+  border-radius: 50%;
+  will-change: transform;
+}
+.bg__blob--a {
+  top: -25vmax;
+  right: -15vmax;
+  background: radial-gradient(circle, var(--blob-a), transparent 62%);
+  animation: drift-a 26s ease-in-out infinite alternate;
+}
+.bg__blob--b {
+  bottom: -30vmax;
+  left: -20vmax;
+  background: radial-gradient(circle, var(--blob-b), transparent 62%);
+  animation: drift-b 32s ease-in-out infinite alternate;
+}
+.bg__blob--c {
+  top: 30%;
+  left: 40%;
+  width: 40vmax;
+  height: 40vmax;
+  background: radial-gradient(circle, var(--blob-c), transparent 62%);
+  animation: drift-c 22s ease-in-out infinite alternate;
+}
+@keyframes drift-a {
+  to {
+    transform: translate(-12vmax, 10vmax) scale(1.1);
+  }
+}
+@keyframes drift-b {
+  to {
+    transform: translate(14vmax, -8vmax) scale(1.15);
+  }
+}
+@keyframes drift-c {
+  to {
+    transform: translate(-16vmax, -12vmax) scale(0.9);
+  }
+}
+.bg__cursor {
+  position: absolute;
+  top: -300px;
+  left: -300px;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--spot), transparent 60%);
+}
+.bg__noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}

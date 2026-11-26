@@ -1,0 +1,187 @@
+.marquees {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 36px;
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+.marquee {
+  overflow: hidden;
+}
+.marquee__track {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+.marquee--reverse .marquee__track {
+  animation-direction: reverse;
+  animation-duration: 44s;
+}
+.marquees:hover .marquee__track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(calc(-50% - 6px));
+  }
+}
+.marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-elev);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-2);
+  white-space: nowrap;
+  transition: color 0.3s, border-color 0.3s;
+}
+.marquee__item svg {
+  font-size: 18px;
+  color: var(--accent);
+}
+.marquee__item:hover {
+  color: var(--text);
+  border-color: var(--accent-line);
+}
+
+/* Bento */
+.bento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.bento__card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 22px;
+}
+.bento__card.is-wide {
+  grid-column: span 2;
+}
+.bento__card.is-full {
+  grid-column: 1 / -1;
+}
+.bento__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.bento__icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 17px;
+  flex: none;
+}
+.bento__head h3 {
+  flex: 1;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+.bento__count {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+.bento__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.bento__flow {
+  position: relative;
+  display: grid;
+  gap: 8px;
+  margin-top: auto;
+  padding: 14px 16px;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.bento__flow-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.bento__flow ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--text);
+}
+.bento__flow li + li::before {
+  content: '→';
+  margin: 0 10px;
+  color: var(--accent);
+}
+.bento__flow-beam {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 30%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), var(--jade), transparent);
+  animation: beam 3.2s var(--ease) infinite;
+}
+@keyframes beam {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(340%);
+  }
+}
+
+/* Salesforce card gets its own cloud-blue accent */
+.bento__card.is-sf {
+  border-color: color-mix(in srgb, var(--sf) 30%, transparent);
+  background:
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--sf) 14%, transparent), transparent 60%),
+    linear-gradient(180deg, var(--surface) 0%, var(--bg-elev) 100%);
+}
+.bento__card.is-sf .bento__icon {
+  background: color-mix(in srgb, var(--sf) 14%, transparent);
+  color: var(--sf);
+  font-size: 21px;
+}
+.bento__card.is-sf .chip:hover {
+  border-color: color-mix(in srgb, var(--sf) 50%, transparent);
+}
+
+@media (max-width: 1180px) {
+  .bento {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .bento__card.is-full {
+    grid-column: auto;
+  }
+}
+@media (max-width: 640px) {
+  .bento {
+    grid-template-columns: 1fr;
+  }
+  .bento__card.is-wide {
+    grid-column: auto;
+  }
+}
